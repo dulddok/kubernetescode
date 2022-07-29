@@ -1,44 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goorm K8S Members</title>
-</head>
-<body>
-    <div>
-        <h1 style="display: inline-block"><a href="/">Goorm K8S Course</a> Review Blogs</h1> <h1 style="color:pink; display: inline-block;"> 2022</h1>
-    </div> 
-    <div>
-        <img src="sky.jpg" width="600" height="400">
-    </div>
-    <div>
-        <p>
-            Are you a member of the Goorm Kubernetes Course ?
-        </p>
-        <a href="register">
-            REGIST
-        </a>
-        <br></br>
-        <a href="login">
-            LOGIN
-        </a>
-     <h4>LIST</h4>
-        <table class="table" style = "word-break:break-all" style="table-layout: fixed">
-            <thread>
-                <th>#</th>
-                <th>Member</th>
-                <th>URL</th>
-            </thread>
-            {% for row in rows %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ row["name"] }}</td>
-                <td><a href="{{ row["url"] }}" target="_blank">Go to {{ row["name"] }} blog</a></td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+   
+{% block bb %}
+<div class="alert alert-primary" role="alert">
+  <h2>Main Page</h2>
+</div>
+    {% for todo in todos: %}
+        <div class="jumbotron">
+          <h1 class="display-4">{{todo.title}}</h1>
+          <p class="lead">{{todo.deadline}}</p>
+          <hr class="my-4">
+          <a class="btn btn-primary btn-lg" href="/{{todo.id}}" role="button">글보기</a>
+          <a class="btn btn-danger btn-lg" href="/{{todo.id}}/delete" role="button">삭제</a>
+          <a class="btn btn-info btn-lg" href="/{{todo.id}}/update" role="button">수정</a>
+        </div>
+    {% endfor %}
+    
+{% endblock %}

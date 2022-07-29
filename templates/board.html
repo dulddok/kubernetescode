@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goorm K8S Members</title>
+</head>
+<body>
+    <div>
+        <h1 style="display: inline-block"><a href="/">Goorm K8S Course</a> Review Blogs</h1> <h1 style="color:pink; display: inline-block;"> 2022</h1>
+    </div> 
+    <div>
+        <img src="sky.jpg" width="600" height="400">
+    </div>
+    <div>
+        <h1>PLEASE SHARE YOUR BLOG</h1>
+        <form action="/add" method="POST">
+            YOUR NICKNAME
+            <br>
+            <input type="text" name="name">
+            <br><br>
+            BLOG URL
+            <br>
+            <input type="url" name="url">
+            <br>
+            <input type = "submit" value = "POST"><br>
+        </form>
+        <h4>BLOG LIST</h4>
+        <table class="table" style = "word-break:break-all" style="table-layout: fixed">
+            <thread>
+                <th>#</th>
+                <th>MEMBER</th>
+                <th>URL</th>
+            </thread>
+            {% for row in rows %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ row["name"] }}</td>
+                <td><a href="{{ row["url"] }}" target="_blank">Go to {{ row["name"] }}'s blog</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
